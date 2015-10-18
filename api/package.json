@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.14.1",
     "cookie-parser": "^1.4.0",
     "cors": "^2.7.1",
@@ -16,6 +17,7 @@
     "ejs": "^2.3.4",
     "express": "^4.13.3",
     "jade": "^1.11.0",
+    "jsonwebtoken": "^5.4.0",
     "method-override": "^2.3.5",
     "mongoose": "^4.1.11",
     "morgan": "^1.6.1"
