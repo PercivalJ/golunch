@@ -1,0 +1,17 @@
+<header>
+  <h1>About {{ lunches.remainingLunches().length }} Lunches</h1>
+</header>
+<main>
+  
+  <section class="List">
+  	<h4>GoLunch Deals</h4> 
+
+    <ul id="lunches">
+	  <li ng-repeat="lunch in lunches.all" data-id="{{lunch._id}}">
+	    <strong>{{lunch.name}}</strong> <em>{{lunch.location}}</em> <span class='status {{lunch.status | lowercase }}'>{{lunch.status | uppercase}}</span>
+	    <button class='delete' ng-click="lunches.deleteLunch(lunch)">X</button>
+	  </li>
+	</ul>
+  		
+  </section>
+</main>
