@@ -1,0 +1,27 @@
+<section>
+	<h1>GoLunch</h1>
+
+	<form ng-submit="lunches.addLunch()" id="newLunch">
+	  <div>
+	    <label for="newLunch-name">Name:</label>
+	    <input type="text" id="newLunch-name" ng-model="lunches.newLunch.name" placeholder="Stout">
+	  </div>
+	  <div>
+	    <label for="newLunch-location">Location:</label>
+	    <input type="text" id="newLunch-location" ng-model="lunches.newLunch.location" placeholder="Santa Monica, CA">
+	  </div>
+	  <div>
+	    <label for="newLunch-status">Status:</label>
+	    <select id="newLunch-status" ng-model='lunches.newLunch.status'>
+	      <option value="" disabled>- - Please Select One - -</option>
+	      <option value="Name">Location</option>
+	      <option value="Location">Location</option>
+	      <option value="Type" selected>Type</option>
+	    </select>
+	  </div>
+	  <div>
+	    <input type="submit" value="Add Lunch">
+	  </div>
+	</form>
+
+</section>

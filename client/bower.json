@@ -1,0 +1,19 @@
+{
+  "name": "golunchapp",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Steve Judd <sejudd1@github.com>"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

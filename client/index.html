@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>GoLunch</title>
+	<link rel="stylesheet" type="text/css" href="./bower_components/bootstrap/dist/css/bootstrap.css">
+	<script src="api/bower_components/angular/angular.min.js"></script>
+  	<script src="api/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+  	<script type="text/javascript" src="./bower_components/angular/angular.js"></script>
+	<script type="text/javascript" src="./bower_components/jquery/dist/jquery.js"></script>
+	<script type="text/javascript" src="./bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  	<script src="client/domain/app.js"></script>
+  	<script src="client/domain/controllers/GoLunchController.js"></script>
+  	<link rel="stylesheet" href="client/css/style.css">
+</head>
+<body ng-app="GoLunchApp">
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" ui-sref="home">Authentication</a>
+	    </div>
+	    <ul class="nav navbar-nav navbar-left">
+	      <li ng-if="!mainCtrl.loggedIn"><a class="btn btn-default" ui-sref="home" role="button">Home</a></li>
+	      <li ng-if="!mainCtrl.loggedIn"><a class="btn btn-default" ui-sref="list" role="button">List</a></li>
+	      <li ng-if="!mainCtrl.loggedIn"><a class="btn btn-default" ui-sref="new" role="button">New</a></li>
+	      <li ng-if="!mainCtrl.loggedIn"><a class="btn btn-default" ui-sref="about" role="button">About</a></li>
+	    </ul>
+	    <ul class="nav navbar-nav navbar-right">
+	      <li ng-if="mainCtrl.loggedIn"><a>Hi {{mainCtrl.user.username}}</a></li>
+	      <li ng-if="!mainCtrl.loggedIn"><a ui-sref="login">Login</a></li>
+	      <li ng-if="!mainCtrl.loggedIn"><a ui-sref="signup">Sign up</a></li>
+	      <li ng-if="mainCtrl.loggedIn"><a ng-click="mainCtrl.logout()">Log out</a></li>  
+	    </ul>
+	  </div>
+	</nav>
+  
+  <div class="wrapper" ui-view ng-controller='GoLunchController as golunch'></div>
+
+</body>
+</html>
