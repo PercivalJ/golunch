@@ -2,39 +2,71 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>GoLunch</title>
+	<title>GoLunchApp</title>
 	<link rel="stylesheet" type="text/css" href="./bower_components/bootstrap/dist/css/bootstrap.css">
-	<script src="api/bower_components/angular/angular.min.js"></script>
-  	<script src="api/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<script src="../client/bower_components/angular/angular.min.js"></script>
+  	<script src="../client/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
   	<script type="text/javascript" src="./bower_components/angular/angular.js"></script>
 	<script type="text/javascript" src="./bower_components/jquery/dist/jquery.js"></script>
 	<script type="text/javascript" src="./bower_components/bootstrap/dist/js/bootstrap.js"></script>
-  	<script src="client/domain/app.js"></script>
-  	<script src="client/domain/controllers/GoLunchController.js"></script>
-  	<link rel="stylesheet" href="client/css/style.css">
+  	<script src="../client/domain/app.js"></script>
+  	<script src="../client/domain/controllers/goLunchController.js"></script>
+  	<link rel="stylesheet" href="../client/css/style.css">
 </head>
 <body ng-app="GoLunchApp">
 	<nav class="navbar navbar-default">
 	  <div class="container-fluid">
 	    <div class="navbar-header">
-	      <a class="navbar-brand" ui-sref="home">Authentication</a>
+	      <a class="navbar-brand" ui-sref="home">GoLunch</a>
 	    </div>
 	    <ul class="nav navbar-nav navbar-left">
-	      <li ng-if="!mainCtrl.loggedIn"><a class="btn btn-default" ui-sref="home" role="button">Home</a></li>
-	      <li ng-if="!mainCtrl.loggedIn"><a class="btn btn-default" ui-sref="list" role="button">List</a></li>
-	      <li ng-if="!mainCtrl.loggedIn"><a class="btn btn-default" ui-sref="new" role="button">New</a></li>
-	      <li ng-if="!mainCtrl.loggedIn"><a class="btn btn-default" ui-sref="about" role="button">About</a></li>
+	      <li ng-if="!userCtrl.loggedIn"><a class="btn btn-default" ui-sref="home" role="button">Home</a></li>
+	      <li ng-if="!userCtrl.loggedIn"><a class="btn btn-default" ui-sref="list" role="button">List</a></li>
+	      <li ng-if="!userCtrl.loggedIn"><a class="btn btn-default" ui-sref="new" role="button">New</a></li>
+	      <li ng-if="!userCtrl.loggedIn"><a class="btn btn-default" ui-sref="about" role="button">About</a></li>
 	    </ul>
 	    <ul class="nav navbar-nav navbar-right">
-	      <li ng-if="mainCtrl.loggedIn"><a>Hi {{mainCtrl.user.username}}</a></li>
-	      <li ng-if="!mainCtrl.loggedIn"><a ui-sref="login">Login</a></li>
-	      <li ng-if="!mainCtrl.loggedIn"><a ui-sref="signup">Sign up</a></li>
-	      <li ng-if="mainCtrl.loggedIn"><a ng-click="mainCtrl.logout()">Log out</a></li>  
+	      <li ng-if="userCtrl.loggedIn"><a>Hi {{userCtrl.user.username}}</a></li>
+	      <li ng-if="!userCtrl.loggedIn"><a ui-sref="login">Login</a></li>
+	      <li ng-if="!userCtrl.loggedIn"><a ui-sref="signup">Sign up</a></li>
+	      <li ng-if="userCtrl.loggedIn"><a ng-click="userCtrl.logout()">Log out</a></li>  
 	    </ul>
 	  </div>
 	</nav>
   
   <div class="wrapper" ui-view ng-controller='GoLunchController as golunch'></div>
+  <div class="wrapper" ui-view ng-controller='usersController as userCtrl'></div>
+
+  <div class="row col-md-6 col-md-offset-3">
+	
+	<div class="jumbotron">
+		<h1>GoLunch</h1>		
+
+			<form ng-submit="userCtrl.signup()">
+				
+				<div class="form-group">
+					<label>Username</label>
+					<input type="text" class="form-control" ng-model="mainCtrl.user.username">
+				</div>
+
+				<div class="form-group">
+					<label>Password</label>
+					<input type="password" class="form-control" ng-model="mainCtrl.user.password">
+				</div>
+
+				<div class="alert alert-danger" ng-if="userCtrl.error">
+					{{ userCtrl.error }}
+				</div>
+
+				<button type="submit" class="btn btn-block btn-primary">
+					<span>Sign up</span>
+				</button>
+
+			</form>
+		</div>
+	</div>
+  </div>
+	
 
 </body>
 </html>
