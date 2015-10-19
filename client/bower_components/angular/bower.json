@@ -4,5 +4,6 @@
   "main": "./angular.js",
   "ignore": [],
   "dependencies": {
+    "angular-ui-router": "~0.2.15"
   }
 }
