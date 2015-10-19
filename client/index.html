@@ -3,7 +3,6 @@
 <head>
 	<meta charset="UTF-8">
 	<title>GoLunchApp</title>
-	<link rel="stylesheet" type="text/css" href="./bower_components/bootstrap/dist/css/bootstrap.css">
 	<script src="../client/bower_components/angular/angular.min.js"></script>
   	<script src="../client/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
   	<script type="text/javascript" src="./bower_components/angular/angular.js"></script>
@@ -11,6 +10,7 @@
 	<script type="text/javascript" src="./bower_components/bootstrap/dist/js/bootstrap.js"></script>
   	<script src="../client/domain/app.js"></script>
   	<script src="../client/domain/controllers/goLunchController.js"></script>
+  	<link rel="stylesheet" type="text/css" href="./bower_components/bootstrap/dist/css/bootstrap.css">
   	<link rel="stylesheet" href="../client/css/style.css">
 </head>
 <body ng-app="GoLunchApp">
@@ -26,7 +26,7 @@
 	      <li ng-if="!userCtrl.loggedIn"><a class="btn btn-default" ui-sref="about" role="button">About</a></li>
 	    </ul>
 	    <ul class="nav navbar-nav navbar-right">
-	      <li ng-if="userCtrl.loggedIn"><a>Hi {{userCtrl.user.username}}</a></li>
+	      <li ng-if="userCtrl.loggedIn"><a>Hi {{mainCtrl.user.username}}</a></li>
 	      <li ng-if="!userCtrl.loggedIn"><a ui-sref="login">Login</a></li>
 	      <li ng-if="!userCtrl.loggedIn"><a ui-sref="signup">Sign up</a></li>
 	      <li ng-if="userCtrl.loggedIn"><a ng-click="userCtrl.logout()">Log out</a></li>  
@@ -35,14 +35,14 @@
 	</nav>
   
   <div class="wrapper" ui-view ng-controller='GoLunchController as golunch'></div>
-  <div class="wrapper" ui-view ng-controller='usersController as userCtrl'></div>
+  	
 
   <div class="row col-md-6 col-md-offset-3">
 	
 	<div class="jumbotron">
 		<h1>GoLunch</h1>		
 
-			<form ng-submit="userCtrl.signup()">
+			<form ng-submit="mainCtrl.signup()">
 				
 				<div class="form-group">
 					<label>Username</label>
@@ -54,8 +54,8 @@
 					<input type="password" class="form-control" ng-model="mainCtrl.user.password">
 				</div>
 
-				<div class="alert alert-danger" ng-if="userCtrl.error">
-					{{ userCtrl.error }}
+				<div class="alert alert-danger" ng-if="mainCtrl.error">
+					{{ mainCtrl.error }}
 				</div>
 
 				<button type="submit" class="btn btn-block btn-primary">
@@ -64,6 +64,7 @@
 
 			</form>
 		</div>
+
 	</div>
   </div>
 	
