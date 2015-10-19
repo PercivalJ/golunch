@@ -7,7 +7,7 @@ var app 			= express()
 var morgan			= require('morgan')
 var port 			= process.env.PORT || 8080
 var mongoose 		= require('mongoose')
-var apiRouter = require('./api/config/userRoutes')
+var apiRouter 		= require('./config/userRoutes')
 
 mongoose.connect('mongodb://localhost:27017/golunch')
 
