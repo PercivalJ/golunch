@@ -3,10 +3,10 @@ var router            = express.Router();
 var bodyParser        = require('body-parser'); //parses information from POST
 var methodOverride    = require('method-override'); //used to manipulate POST
 
-var lunchesController = require('../controllers/lunches');
+var lunchesController = require('../controllers/lunchesController');
 
 // http://127.0.0.1:3000/lunches
-router.route('/lunches')
+router.route('/')
 
   //GET all lunches
   .get(lunchesController.getAll)
@@ -15,7 +15,7 @@ router.route('/lunches')
   .post(lunchesController.createLunch);
 
 
-router.route('/lunches/:id')
+router.route('/:id')
 
   // GET return specific lunch
   .get(lunchesController.getLunch)

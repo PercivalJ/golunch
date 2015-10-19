@@ -1,11 +1,11 @@
 var express 			= require('express')
-var apiRouter 			= express.Router() //get an instance of express router
+var userRouter 			= express.Router() //get an instance of express router
 var usersController 	= require('../controllers/usersController')
 var jwt 				= require('jsonwebtoken')
 var mySpecialSecret 	= "pizza"
 var User 				= require('../models/User')
 
-apiRouter.route('/authenticate')
+userRouter.route('/authenticate')
 	.post(function(req, res){
 	console.log('trying to generate a JWT')
 	// 1 - find the user in our db
@@ -35,12 +35,12 @@ apiRouter.route('/authenticate')
 	})
 })
 
-apiRouter.route('/users')
+userRouter.route('/')
 	.post(usersController.create)
 
 // the order of routes relative to auth middleware is important!
 
-apiRouter.use(function(req, res, next){
+userRouter.use(function(req, res, next){
 	// let's check everywhere for the JWT!
 	var token = req.body.token || req.param('token') || req.headers['x-access-token']
 
@@ -63,15 +63,15 @@ apiRouter.use(function(req, res, next){
 	console.log("checking is user is logged in")
 })
 
-apiRouter.route('/users')
+userRouter.route('/')
 	.get(usersController.index)
 
-apiRouter.route('/me')
+userRouter.route('/me')
 	.get(function(req, res){
 		res.send(req.decoded)
 	})
 
-apiRouter.route('/users/:user_id')
+userRouter.route('/:user_id')
 	.get(usersController.show)
 
 	.put(usersController.update)
@@ -79,4 +79,4 @@ apiRouter.route('/users/:user_id')
 	.delete(usersController.destroy)
 
 
-module.exports = apiRouter
+module.exports = userRouter
